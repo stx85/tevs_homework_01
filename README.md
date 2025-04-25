@@ -36,3 +36,11 @@ docker run -d \
  --network kafka-net \
  provectuslabs/kafka-ui:latest
 ```
+
+## Hosts file changes
+
+Open the file `C:\Windows\System32\drivers\etc\hosts` as administrator.
+
+Add `127.0.0.1 kafka-server` at the end of the file.
+
+Save and close.
