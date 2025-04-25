@@ -1,4 +1,4 @@
-﻿package fh.bswe.statusserver.repository;
+package fh.bswe.statusserver.repository;
 
 import fh.bswe.statusserver.entity.Status;
 import org.springframework.data.repository.CrudRepository;

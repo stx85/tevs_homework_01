@@ -1,4 +1,4 @@
-﻿package fh.bswe.statusserver.service;
+package fh.bswe.statusserver.service;
 
 import fh.bswe.statusserver.entity.Status;
 import fh.bswe.statusserver.repository.StatusRepository;

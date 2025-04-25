@@ -10,8 +10,8 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: status-server-service
-          uri: lb://status-server-service
+        - id: statusserver-route
+          uri: lb://statusserver
           predicates:
             - Path=/status/**
 

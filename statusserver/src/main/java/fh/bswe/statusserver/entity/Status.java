@@ -1,4 +1,4 @@
-﻿package fh.bswe.statusserver.entity;
+package fh.bswe.statusserver.entity;
 
 import jakarta.persistence.*;
 
