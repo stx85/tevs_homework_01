@@ -9,8 +9,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientRequestException;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.netty.http.client.HttpClient;
 
 import java.time.Duration;
