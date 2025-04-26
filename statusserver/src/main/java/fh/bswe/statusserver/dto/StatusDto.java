@@ -1,34 +1,14 @@
-package fh.bswe.statusserver.entity;
+package fh.bswe.statusserver.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity
-@Table
-public class Status {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Lob
-    @Column(nullable = true)
+public class StatusDto {
     private String info;
-
-    @Column(length = 100, nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private LocalDateTime date;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getInfo() {
         return info;
@@ -57,8 +37,8 @@ public class Status {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Status status = (Status) o;
-        return Objects.equals(info, status.info) && Objects.equals(name, status.name) && Objects.equals(date, status.date);
+        StatusDto statusDto = (StatusDto) o;
+        return Objects.equals(info, statusDto.info) && Objects.equals(name, statusDto.name) && Objects.equals(date, statusDto.date);
     }
 
     @Override

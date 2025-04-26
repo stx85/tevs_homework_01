@@ -1,6 +1,8 @@
 package fh.bswe.statusserver.controller;
 
-import fh.bswe.statusserver.entity.Status;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import fh.bswe.statusserver.dto.StatusDto;
+import fh.bswe.statusserver.kafka.consumer.MessageConsumer;
 import fh.bswe.statusserver.kafka.producer.MessageProducer;
 import fh.bswe.statusserver.service.StatusService;
 import org.springframework.http.HttpStatus;
@@ -16,10 +18,18 @@ public class StatusController {
 
     private final StatusService statusService;
     private final MessageProducer messageProducer;
+    private final MessageConsumer messageConsumer;
+    private final ObjectMapper objectMapper;
 
-    public StatusController(StatusService statusService, MessageProducer messageProducer) {
+    public StatusController(
+            StatusService statusService,
+            MessageProducer messageProducer,
+            ObjectMapper objectMapper,
+            MessageConsumer messageConsumer) {
         this.statusService = statusService;
         this.messageProducer = messageProducer;
+        this.objectMapper = objectMapper;
+        this.messageConsumer = messageConsumer;
     }
 
     @GetMapping("all")
@@ -41,7 +51,7 @@ public class StatusController {
     }
 
     @PostMapping("all")
-    public ResponseEntity<?> saveAllStatus(@RequestBody List<Status> status) {
+    public ResponseEntity<?> saveAllStatus(@RequestBody List<StatusDto> status) {
         try {
             statusService.setAllStatus(status);
 
@@ -52,9 +62,12 @@ public class StatusController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> saveStatus(@RequestBody Status status) {
+    public ResponseEntity<?> saveStatus(@RequestBody StatusDto status) {
         try {
-            return new ResponseEntity<>(statusService.setStatus(status), HttpStatus.CREATED);
+            StatusDto savedStatus = statusService.setStatus(status);
+            messageConsumer.setStatus(savedStatus);
+            messageProducer.sendMessage("status", objectMapper.writeValueAsString(status));
+            return new ResponseEntity<>(savedStatus, HttpStatus.CREATED);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

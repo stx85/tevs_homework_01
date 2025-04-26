@@ -16,4 +16,7 @@ public class MessageProducer {
         kafkaTemplate.send(topic, message);
     }
 
+    public void sendOnlineStatus(String key, String message) {
+        kafkaTemplate.send("online-status", key, message);
+    }
 }

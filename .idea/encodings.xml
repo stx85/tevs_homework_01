@@ -2,7 +2,15 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/controller/StatusController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/dto/StatusDto.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/entity/Status.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/ClientDiscoveryHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaApplication.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaInstance.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaJsonResponseParser.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/JacksonConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/Port.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/StatusServerInfo.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/KafkaConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/KafkaConsumerConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/KafkaMessageService.java" charset="UTF-8" />
@@ -15,6 +23,8 @@
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/producer/KafkaProducerConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/producer/MessageProducer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/repository/StatusRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/service/ServerDiscoveryService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/service/ServerRequestService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/service/StatusService.java" charset="UTF-8" />
   </component>
 </project>
