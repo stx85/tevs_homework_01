@@ -18,7 +18,15 @@ public class StatusService {
     }
 
     public StatusDto setStatus(StatusDto status) {
-        return mapToDto(statusRepository.save(mapToEntity(status)));
+        final Optional<Status> foundStatus = statusRepository.findStatusByName(status.getName());
+
+        if(foundStatus.isPresent()) {
+            foundStatus.get().setDate(status.getDate());
+            foundStatus.get().setInfo(status.getInfo());
+            return mapToDto(statusRepository.save(foundStatus.get()));
+        } else {
+            return mapToDto(statusRepository.save(mapToEntity(status)));
+        }
     }
 
     public StatusDto getStatus(String name) throws Exception {
