@@ -5,7 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/statusserver" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/statusserver" />
@@ -14,7 +14,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/tevsgateway" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/tevsgateway" />
@@ -23,7 +23,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/tevsregistryserver" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/tevsregistryserver" />

@@ -7,7 +7,7 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: testgroup
+      group-id: ${KAFKA_GROUP_ID:statusserver-${random.value}}
 
 eureka:
   instance:
@@ -17,8 +17,8 @@ eureka:
     fetch-registry: false
     healthcheck:
       enabled: true
-    serviceUrl:
-      defaultZone: http://localhost:8090/eureka
+#    serviceUrl:
+#      defaultZone: http://localhost:8090/eureka
 
 logging:
   level:
@@ -29,4 +29,4 @@ logging:
         gateway: DEBUG
     com:
       netflix:
-        discovery: DEBUG
+        discovery: ERROR

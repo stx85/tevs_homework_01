@@ -13,6 +13,7 @@ public class MessageProducer {
     }
 
     public void sendMessage(String topic, String message) {
+        System.out.println("Sending message \"" + topic + "\": " + message);
         kafkaTemplate.send(topic, message);
     }
 

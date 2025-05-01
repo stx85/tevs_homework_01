@@ -33,7 +33,7 @@ public class EurekaJsonResponseParser {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error parsing server list: " + e.getMessage());
+            System.err.println("Error parsing server list: " + e.getMessage());
         }
 
         return serverInfos;

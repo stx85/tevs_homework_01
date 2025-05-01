@@ -1,0 +1,119 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - tevs-net
+
+  kafka-server:
+    image: bitnami/kafka:3.4.0
+    container_name: kafka-server
+    hostname: kafka-server
+    ports:
+      - "9092:9092"
+      - "9093:9032"
+    environment:
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+      KAFKA_CFG_BROKER_ID: 1
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka-server:9092
+    networks:
+      - tevs-net
+    depends_on:
+      - zookeeper
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    hostname: kafka-ui
+    ports:
+      - "8088:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-server:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    networks:
+      - tevs-net
+    depends_on:
+      - kafka-server
+
+  registry:
+    build:
+      context: ./tevsregistryserver
+      dockerfile: Dockerfile
+    image: tevs/registry:latest
+    container_name: registry
+    ports:
+      - "8090:8090"
+    networks:
+      - tevs-net
+    environment:
+      - eureka.client.register-with-eureka=false
+      - eureka.client.fetch-registry=false
+      - eureka.client.service-url.defaultZone=http://registry:8090/eureka
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8090/eureka/apps" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  gateway:
+    build:
+      context: ./tevsgateway
+      dockerfile: Dockerfile
+    image: tevs/gateway:latest
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - registry
+    networks:
+      - tevs-net
+    environment:
+      - eureka.client.service-url.defaultZone=http://registry:8090/eureka
+    restart: on-failure
+
+  statusserver1:
+    build:
+      context: ./statusserver
+      dockerfile: Dockerfile
+    image: tevs/statusserver:latest
+    container_name: statusserver1
+    depends_on:
+      - registry
+    networks:
+      - tevs-net
+    environment:
+      - eureka.client.service-url.defaultZone=http://registry:8090/eureka
+      - server.port=0
+
+  statusserver2:
+    image: tevs/statusserver:latest
+    container_name: statusserver2
+    depends_on:
+      - registry
+    networks:
+      - tevs-net
+    environment:
+      - eureka.client.service-url.defaultZone=http://registry:8090/eureka
+      - server.port=0
+
+  statusserver3:
+    image: tevs/statusserver:latest
+    container_name: statusserver3
+    depends_on:
+      - registry
+    networks:
+      - tevs-net
+    environment:
+      - eureka.client.service-url.defaultZone=http://registry:8090/eureka
+      - server.port=0
+
+networks:
+  tevs-net:
+    driver: bridge

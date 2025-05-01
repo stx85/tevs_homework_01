@@ -23,7 +23,7 @@ public class ServerDiscoveryService {
     public ServerDiscoveryService(ServerRequestService serverRequestService) {
         this.serverRequestService = serverRequestService;
         this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8090/eureka")
+                .baseUrl("http://registry:8090/eureka")
                 .defaultHeader("Accept", "application/json")
                 .build();
     }
@@ -35,7 +35,13 @@ public class ServerDiscoveryService {
         results = EurekaJsonResponseParser.parseServerList(getStatusServers());
 
         if (!results.isEmpty()) {
-            serverRequestService.fetchStatus(results.getFirst());
+            for (StatusServerInfo serverInfo : results) {
+                System.out.println("Fetch from server: " + serverInfo.getHost() + ":" + serverInfo.getPort());
+                if (serverRequestService.fetchStatus(results.getFirst())) {
+                    System.out.println("Successfully fetched status from server: " + serverInfo.getHost());
+                    break;
+                }
+            }
         }
     }
 

@@ -35,14 +35,22 @@ public class ServerRequestService {
         this.statusService = statusService;
     }
 
-    public void fetchStatus(StatusServerInfo serverInfo) {
+    public boolean fetchStatus(StatusServerInfo serverInfo) {
         List<StatusDto> status = serverRequest(serverInfo);
+
+        if (status == null) {
+            return false;
+        }
 
         try {
             statusService.setAllStatus(status);
+
+            return true;
         } catch (Exception e) {
             System.out.println("fetchStatus error: " + e.getMessage());
         }
+
+        return false;
     }
 
     public List<StatusDto> serverRequest(StatusServerInfo serverInfo) {

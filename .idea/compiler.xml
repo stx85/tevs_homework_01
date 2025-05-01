@@ -7,4 +7,17 @@
       <module name="tevsserver.test" target="21" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="statusserver" options="-parameters" />
+      <module name="statusserver.main" options="-parameters" />
+      <module name="statusserver.test" options="-parameters" />
+      <module name="tevsgateway" options="-parameters" />
+      <module name="tevsgateway.main" options="-parameters" />
+      <module name="tevsgateway.test" options="-parameters" />
+      <module name="tevsregistryserver" options="-parameters" />
+      <module name="tevsregistryserver.main" options="-parameters" />
+      <module name="tevsregistryserver.test" options="-parameters" />
+    </option>
+  </component>
 </project>

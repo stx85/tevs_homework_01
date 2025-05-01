@@ -21,9 +21,10 @@ public class MessageConsumer {
         this.statusService = statusService;
     }
 
-    @KafkaListener(topics = "status", groupId = "testgroup")
+    @KafkaListener(topics = "status", groupId = "#{T(java.util.UUID).randomUUID().toString()}")
     public void listen(String message) {
         try {
+            System.out.println("Received message \"status\": " + message);
             StatusDto status = objectMapper.readValue(message, StatusDto.class);
 
             if (!currentStatus.contains(status)) {
@@ -34,7 +35,7 @@ public class MessageConsumer {
                 currentStatus.remove(status);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e.getMessage());
         }
     }
 

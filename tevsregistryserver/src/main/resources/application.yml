@@ -7,10 +7,12 @@ server:
 
 eureka:
   client:
-    registry-with-eureka: false
+    healthcheck:
+      enabled: true
+    register-with-eureka: false
     fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:8090/eureka
+#    service-url:
+#      defaultZone: http://localhost:8090/eureka
 
 logging:
   level:

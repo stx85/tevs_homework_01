@@ -1,4 +1,18 @@
-﻿## Zookeeper Installation
+﻿## Start Docker Compose
+
+To start services, including kafka, use the following command:
+
+```shell
+# Building and Starting Services
+docker compose up --build
+
+# If already buildet, just start Services
+docker compose up
+```
+
+## Zookeeper Installation
+
+> 💡 Not necessary with docker compose
 
 ```shell
 docker run -d \
@@ -9,6 +23,8 @@ docker run -d \
 ```
 
 ## KAFKA Installation
+
+> 💡 Not necessary with docker compose
 
 ```shell
 docker run -d --name kafka-server \
@@ -26,6 +42,8 @@ docker run -d --name kafka-server \
 
 ## KAFKA UI Installation
 
+> 💡 Not necessary with docker compose
+
 ```shell
 docker run -d \
  --name kafka-ui \
@@ -38,6 +56,8 @@ docker run -d \
 ```
 
 ## Hosts file changes
+
+> 💡 Not necessary with docker compose
 
 Open the file `C:\Windows\System32\drivers\etc\hosts` as administrator.
 
