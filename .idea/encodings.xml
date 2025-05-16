@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/config/JacksonConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/controller/StatusController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/dto/StatusDto.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/entity/Status.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaApplication.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaInstance.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaJsonResponseParser.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/EurekaRegistrationUpdater.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/JacksonConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/Port.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/ServerPortListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/StatusServerInfo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/portupdate/EurekaRegistrationUpdater.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/helper/portupdate/ServerPortListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/consumer/KafkaConsumerConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/consumer/MessageConsumer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statusserver/src/main/java/fh/bswe/statusserver/kafka/producer/KafkaProducerConfig.java" charset="UTF-8" />

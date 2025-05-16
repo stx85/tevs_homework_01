@@ -54,15 +54,26 @@ public class ServerRequestService {
     }
 
     public List<StatusDto> serverRequest(StatusServerInfo serverInfo) {
-        try {
-            return client
-                    .get()
-                    .uri("http://" + serverInfo.getHost() + ":" + serverInfo.getPort() + "/status/all")
-                    .retrieve()
-                    .bodyToMono(new ParameterizedTypeReference<List<StatusDto>>() {})
-                    .block();
-        } catch (Exception e) {
-            System.out.println("ServerRequest error: " + e.getMessage());
+
+        // simple resend of request in case of error
+        for (int i = 0; i < 5; i++) {
+            try {
+                return client
+                        .get()
+                        .uri("http://" + serverInfo.getHost() + ":" + serverInfo.getPort() + "/status/all")
+                        .retrieve()
+                        .bodyToMono(new ParameterizedTypeReference<List<StatusDto>>() {})
+                        .block();
+            } catch (Exception e) {
+                System.out.println("ServerRequest error: " + e.getMessage());
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Interrupted Exception: " + e.getMessage());
+            }
+
+            System.out.println("Successfully fetched status from server: " + serverInfo.getHost());
         }
 
         return null;

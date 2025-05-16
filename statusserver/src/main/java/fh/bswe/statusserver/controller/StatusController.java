@@ -5,6 +5,8 @@ import fh.bswe.statusserver.dto.StatusDto;
 import fh.bswe.statusserver.kafka.consumer.MessageConsumer;
 import fh.bswe.statusserver.kafka.producer.MessageProducer;
 import fh.bswe.statusserver.service.StatusService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/status")
 public class StatusController {
+    private static final Logger logger = LoggerFactory.getLogger(StatusController.class);
 
     private final StatusService statusService;
     private final MessageProducer messageProducer;
@@ -34,6 +37,7 @@ public class StatusController {
     @GetMapping("all")
     public ResponseEntity<?> findAll() {
         try {
+            logger.info("findAll");
             return new ResponseEntity<>(statusService.getAllStatus(), HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

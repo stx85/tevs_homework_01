@@ -3,6 +3,7 @@ package fh.bswe.statusserver.kafka.consumer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fh.bswe.statusserver.dto.StatusDto;
 import fh.bswe.statusserver.service.StatusService;
+import fh.bswe.statusserver.manager.SyncStatusManager;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +16,14 @@ public class MessageConsumer {
     private List<StatusDto> currentStatus = new ArrayList<>();
     private final ObjectMapper objectMapper;
     private final StatusService statusService;
+    private final SyncStatusManager syncStatusManager;
 
-    public MessageConsumer(ObjectMapper objectMapper, StatusService statusService) {
+    public MessageConsumer(ObjectMapper objectMapper,
+                           StatusService statusService,
+                           SyncStatusManager syncStatusManager) {
         this.objectMapper = objectMapper;
         this.statusService = statusService;
+        this.syncStatusManager = syncStatusManager;
     }
 
     @KafkaListener(topics = "status", groupId = "#{T(java.util.UUID).randomUUID().toString()}")
@@ -36,6 +41,7 @@ public class MessageConsumer {
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
+            syncStatusManager.markOutOfSync();
         }
     }
 

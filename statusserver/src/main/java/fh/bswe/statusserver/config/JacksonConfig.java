@@ -1,4 +1,4 @@
-package fh.bswe.statusserver.helper;
+package fh.bswe.statusserver.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

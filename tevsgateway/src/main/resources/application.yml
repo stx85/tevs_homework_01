@@ -5,7 +5,13 @@ spring:
   application:
     name: tevsgateway
   cloud:
+    loadbalancer:
+      retry:
+        enabled: true
     gateway:
+      httpclient:
+        connect-timeout: 2000
+        response-timeout: 3s
       discovery:
         locator:
           enabled: true
@@ -19,8 +25,8 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-#    serviceUrl:
-#      defaultZone: http://localhost:8090/eureka
+    eureka-service-url-poll-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
 
 management:
   endpoints:

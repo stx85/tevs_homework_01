@@ -1,4 +1,4 @@
-package fh.bswe.statusserver.helper;
+package fh.bswe.statusserver.helper.portupdate;
 
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.event.EventListener;

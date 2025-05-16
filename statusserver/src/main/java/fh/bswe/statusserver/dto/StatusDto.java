@@ -1,7 +1,5 @@
 package fh.bswe.statusserver.dto;
 
-import jakarta.persistence.Column;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 

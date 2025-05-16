@@ -6,13 +6,13 @@ server:
   port: 8090
 
 eureka:
+  server:
+    eviction-interval-timer-in-ms: 5000
   client:
     healthcheck:
       enabled: true
     register-with-eureka: false
     fetch-registry: false
-#    service-url:
-#      defaultZone: http://localhost:8090/eureka
 
 logging:
   level:

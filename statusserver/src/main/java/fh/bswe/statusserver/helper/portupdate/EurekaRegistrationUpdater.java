@@ -1,10 +1,8 @@
-package fh.bswe.statusserver.helper;
-
+package fh.bswe.statusserver.helper.portupdate;
 
 import com.netflix.appinfo.InstanceInfo;
 import org.springframework.stereotype.Component;
 import com.netflix.appinfo.ApplicationInfoManager;
-import jakarta.annotation.PostConstruct;
 
 @Component
 public class EurekaRegistrationUpdater {
