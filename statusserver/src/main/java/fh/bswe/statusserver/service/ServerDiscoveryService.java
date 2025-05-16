@@ -1,18 +1,12 @@
 package fh.bswe.statusserver.service;
 
-import com.netflix.discovery.EurekaClient;
-import com.netflix.discovery.converters.jackson.EurekaJsonJacksonCodec;
 import fh.bswe.statusserver.helper.EurekaJsonResponseParser;
 import fh.bswe.statusserver.helper.StatusServerInfo;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import org.w3c.dom.*;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
