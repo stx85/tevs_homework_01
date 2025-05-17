@@ -1,0 +1,4 @@
+rootProject.name = 'tevs_homework_01'
+include('statusserver', 'tevsgateway', 'tevsregistryserver')
+
+
