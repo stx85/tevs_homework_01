@@ -8,6 +8,7 @@ services:
       - "2181:2181"
     networks:
       - tevs-net
+    restart: on-failure
 
   kafka-server:
     image: bitnami/kafka:3.4.0
@@ -26,6 +27,7 @@ services:
       - tevs-net
     depends_on:
       - zookeeper
+    restart: on-failure
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -56,6 +58,7 @@ services:
       - eureka.client.register-with-eureka=false
       - eureka.client.fetch-registry=false
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
+    restart: on-failure
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8090/eureka/apps" ]
       interval: 10s
@@ -91,6 +94,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
       - server.port=0
+    restart: on-failure
 
   statusserver2:
     image: tevs/statusserver:latest
@@ -102,6 +106,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
       - server.port=0
+    restart: on-failure
 
   statusserver3:
     image: tevs/statusserver:latest
@@ -113,6 +118,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
       - server.port=0
+    restart: on-failure
 
 networks:
   tevs-net:

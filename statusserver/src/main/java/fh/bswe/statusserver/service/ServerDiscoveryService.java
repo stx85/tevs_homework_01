@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -29,9 +30,12 @@ public class ServerDiscoveryService {
 
     @PostConstruct
     public void synchronize() {
-        List<StatusServerInfo> results = disocverStatusServers();
+        List<StatusServerInfo> results = discoverStatusServers();
 
         if (!results.isEmpty()) {
+
+            Collections.shuffle(results);
+
             for (StatusServerInfo serverInfo : results) {
                 System.out.println("Fetch from server: " + serverInfo.getHost() + ":" + serverInfo.getPort());
                 if (serverRequestService.fetchStatus(results.getFirst())) {
@@ -45,7 +49,7 @@ public class ServerDiscoveryService {
         }
     }
 
-    public List<StatusServerInfo> disocverStatusServers() {
+    public List<StatusServerInfo> discoverStatusServers() {
         return EurekaJsonResponseParser.parseServerList(getStatusServers());
     }
 

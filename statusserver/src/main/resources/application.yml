@@ -8,6 +8,9 @@ spring:
     bootstrap-servers: localhost:9092
     consumer:
       group-id: ${KAFKA_GROUP_ID:statusserver-${random.value}}
+      heartbeat-interval: 3000
+      properties:
+        session.timeout.ms: 5000
 
 eureka:
   instance:
@@ -19,7 +22,6 @@ eureka:
     fetch-registry: false
     healthcheck:
       enabled: true
-
 
 logging:
   level:
