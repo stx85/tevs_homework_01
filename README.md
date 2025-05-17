@@ -1,4 +1,15 @@
-﻿## Start Docker Compose
+﻿## Build Project
+
+To build the project stay in the root folder and type following:
+
+```shell
+./gradlew bootJar
+```
+
+All Projects will be built accordingly. \
+Next start docker compose.
+
+## Start Docker Compose
 
 To start services, including kafka, use the following command:
 
