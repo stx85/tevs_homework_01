@@ -8,6 +8,8 @@ spring:
     loadbalancer:
       retry:
         enabled: true
+      cache:
+        enabled: false
     gateway:
       httpclient:
         connect-timeout: 2000
@@ -25,8 +27,8 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    eureka-service-url-poll-interval-seconds: 10
-    registry-fetch-interval-seconds: 10
+    eureka-service-url-poll-interval-seconds: 2
+    registry-fetch-interval-seconds: 2
 
 management:
   endpoints:
@@ -43,4 +45,4 @@ logging:
         gateway: DEBUG
     com:
       netflix:
-        discovery: DEBUG
+        discovery: INFO

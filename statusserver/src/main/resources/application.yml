@@ -15,8 +15,8 @@ spring:
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 4
   client:
     register-with-eureka: true
     fetch-registry: false
