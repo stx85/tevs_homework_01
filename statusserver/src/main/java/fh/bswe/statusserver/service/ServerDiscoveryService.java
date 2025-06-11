@@ -38,7 +38,7 @@ public class ServerDiscoveryService {
 
             for (StatusServerInfo serverInfo : results) {
                 System.out.println("Fetch from server: " + serverInfo.getHost() + ":" + serverInfo.getPort());
-                if (serverRequestService.fetchStatus(results.getFirst())) {
+                if (serverRequestService.fetchStatus(serverInfo)) {
                     System.out.println("Successfully fetched status from server: " + serverInfo.getHost());
                     syncStatusManager.markInSync();
                     break;
