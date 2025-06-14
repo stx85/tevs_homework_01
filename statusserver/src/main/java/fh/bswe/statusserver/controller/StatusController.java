@@ -34,6 +34,18 @@ public class StatusController {
         this.messageConsumer = messageConsumer;
     }
 
+    @DeleteMapping("")
+    public ResponseEntity<?> deleteStatus(@RequestBody StatusDto statusDto) {
+        try {
+            logger.info("delete status: {}", statusDto);
+            statusService.deleteStatus(statusDto);
+            messageProducer.sendMessage("delete", objectMapper.writeValueAsString(statusDto));
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
     @GetMapping("all")
     public ResponseEntity<?> findAll() {
         try {

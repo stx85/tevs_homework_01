@@ -17,6 +17,16 @@ public class StatusService {
         this.statusRepository = statusRepository;
     }
 
+    public void deleteStatus(StatusDto status) {
+        final Optional<Status> foundStatus = statusRepository.findStatusByName(status.getName());
+
+        if(foundStatus.isPresent()) {
+            foundStatus.get().setDate(status.getDate());
+            foundStatus.get().setInfo(status.getInfo());
+            statusRepository.delete(foundStatus.get());
+        }
+    }
+
     public StatusDto setStatus(StatusDto status) {
         final Optional<Status> foundStatus = statusRepository.findStatusByName(status.getName());
 
