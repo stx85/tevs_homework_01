@@ -25,6 +25,12 @@ export class DataListComponent implements OnInit {
       this.onRequest();
   }
 
+  onDelete(entry: Status) {
+    this.backend.deleteStatus(entry).subscribe(result => {
+      if (result) {}
+    })
+  }
+
   onRequest() {
     this.backend.requestAllStatus().subscribe(status => {
       console.log(status);

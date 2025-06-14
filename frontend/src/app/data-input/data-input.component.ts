@@ -28,7 +28,7 @@ export class DataInputComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private backend: BackendService
-  ) { 
+  ) {
     this.isPositiveResponse = 0;
   }
 

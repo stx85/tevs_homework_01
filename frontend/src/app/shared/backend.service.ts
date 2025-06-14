@@ -26,6 +26,25 @@ export class BackendService {
     );
   }
 
+  public deleteStatus(data: Status): Observable<boolean> {
+    const url = `${this.apiUrl}`;
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      body: data
+    };
+
+    console.log(data);
+
+    return this.http.delete<Status>(url, options).pipe(
+      map(() => true),
+      catchError(error => {
+        console.error('Error: ', error);
+        return of(false);
+      })
+    );
+  }
+
+
   public requestAllStatus(): Observable<Status[]> {
     return this.http.get<Status[]>(`${this.apiUrl}/all`);
   }

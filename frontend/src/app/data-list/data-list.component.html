@@ -16,7 +16,13 @@
     <!-- Date Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Date</th>
-      <td mat-cell *matCellDef="let entry">{{entry.date}}</td>
+      <td mat-cell *matCellDef="let entry">
+        {{entry.date}}
+        <button mat-raised-button color="secondary" (click)="onDelete(entry)"
+        >
+          Delete
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

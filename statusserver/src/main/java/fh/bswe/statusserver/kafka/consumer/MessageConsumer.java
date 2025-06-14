@@ -45,6 +45,20 @@ public class MessageConsumer {
         }
     }
 
+    @KafkaListener(topics = "delete", groupId = "#{T(java.util.UUID).randomUUID().toString()}")
+    public void listenDelete(String message) {
+        try {
+            System.out.println("Received message \"delete\": " + message);
+            StatusDto status = objectMapper.readValue(message, StatusDto.class);
+
+            System.out.println("delete status: " + currentStatus);
+            statusService.deleteStatus(status);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            syncStatusManager.markOutOfSync();
+        }
+    }
+
     public void setStatus(StatusDto status) {
         currentStatus.add(status);
     }

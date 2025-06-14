@@ -6,18 +6,16 @@
                 <mat-form-field>
                     <mat-label>Name</mat-label>
                     <input matInput required type="input" formControlName="name" />
-                    <mat-error>Please provide the name</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-md-8">
                 <mat-form-field>
                     <mat-label>Info</mat-label>
                     <input matInput required type="input" formControlName="info" />
-                    <mat-error>Please provide the info</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-md-6">
-                <button [disabled]="formGroup.invalid" mat-raised-button color="primary" type="submit">Submit</button>
+                <button [disabled]="formGroup.invalid" mat-raised-button color="primary" type="submit">Add</button>
             </div>
             <h3 *ngIf="isPositiveResponse > 0">Positive Response</h3>
             <h3 *ngIf="isPositiveResponse < 0">Negative Response</h3>
