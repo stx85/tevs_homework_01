@@ -27,6 +27,7 @@ public class StatusSyncScheduler {
     @Scheduled(fixedDelay = 10000)
     public void synchronize() {
         if (syncStatusManager.isOutOfSync()) {
+            logger.info("StatusSyncScheduler: Out of sync.");
             if (networkHealthManager.isHealthy()) {
                 logger.info("StatusSyncScheduler: Synchronizing...");
                 try {

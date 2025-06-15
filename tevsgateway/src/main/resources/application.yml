@@ -9,11 +9,18 @@ spring:
       retry:
         enabled: true
       cache:
-        enabled: false
+        enabled: true
+        ttl: 3s
     gateway:
+      default-filters:
+        - name: Retry
+          args:
+            retries: 3
+            statuses: BAD_GATEWAY, GATEWAY_TIMEOUT, INTERNAL_SERVER_ERROR
+            methods: GET
       httpclient:
-        connect-timeout: 2000
-        response-timeout: 3s
+        connect-timeout: 5000
+        response-timeout: 6s
       discovery:
         locator:
           enabled: true

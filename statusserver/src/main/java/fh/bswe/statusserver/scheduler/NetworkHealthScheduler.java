@@ -25,7 +25,7 @@ public class NetworkHealthScheduler {
         this.networkHealthManager = networkHealthmanager;
     }
 
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 1500)
     public void checkNetworkHealth() {
         try (Socket socket = new Socket()) {
             socket.connect(new InetSocketAddress("kafka-server", 9092), 2000);

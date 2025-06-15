@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8091
 
 spring:
   application:
@@ -14,14 +14,22 @@ spring:
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${random.int}
-    lease-renewal-interval-in-seconds: 2
-    lease-expiration-duration-in-seconds: 4
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+    initial-status: up
+    health-check-url-path: /actuator/health
+    status-page-url-path: /actuator/info
   client:
     register-with-eureka: true
     fetch-registry: false
     healthcheck:
       enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
 
 logging:
   level:

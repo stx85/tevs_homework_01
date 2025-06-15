@@ -43,6 +43,7 @@ public class ServerRequestService {
         }
 
         try {
+            statusService.deleteStatusAll();
             statusService.setAllStatus(status);
 
             return true;

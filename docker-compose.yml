@@ -93,7 +93,6 @@ services:
       - tevs-net
     environment:
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
-      - server.port=0
     restart: on-failure
 
   statusserver2:
@@ -105,7 +104,6 @@ services:
       - tevs-net
     environment:
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
-      - server.port=0
     restart: on-failure
 
   statusserver3:
@@ -117,7 +115,6 @@ services:
       - tevs-net
     environment:
       - eureka.client.service-url.defaultZone=http://registry:8090/eureka
-      - server.port=0
     restart: on-failure
 
 networks:
